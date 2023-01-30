@@ -27,7 +27,11 @@ Route::get('/hello', function() {
 
 // route with wildcard, curly braces around param for wildcard. closure is function with variable of same name
 Route::get('/posts/{id}', function($id) {
+    // debugging, showing values of what is passed in with helpers methods - dump, die, debug
+    ddd($id);
     return response ('Post '. $id);
     // add constraints to what can be passed. 
     })->where('id', '[0-9]+');
+
+
 
