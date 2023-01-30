@@ -18,7 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+//
 Route::get('/hello', function() {
-    return 'Hello World';
+    // response helper. takes in string and status. add headers.
+    return response('<h1>Hello World</h1>', 200) ->
+        header('Content-Type', 'text/plain');
 });
+
