@@ -21,7 +21,11 @@ Route::get('/', function () {
 //
 Route::get('/hello', function() {
     // response helper. takes in string and status. add headers.
-    return response('<h1>Hello World</h1>', 200) ->
-        header('Content-Type', 'text/plain');
+    return response('<h1>Hello World</h1>', 200) 
+        ->header('Content-Type', 'text/plain');
 });
 
+// route with wildcard, curly braces around param for wildcard. closure is function with variable of same name
+Route::get('/posts/{id}', function($id) {
+    return response ('Post '. $id);
+});
