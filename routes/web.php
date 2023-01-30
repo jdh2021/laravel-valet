@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// route class to call HTTP method GET. similar to express.js. takes in endpoint and closure that is a function.
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::get('/hello', function() {
+    return 'Hello World';
 });
