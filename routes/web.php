@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+// bring in model
+use App\Models\Listing;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,25 +16,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// route class to call HTTP method GET. similar to express.js. takes in endpoint and closure that is a function.
+/* route class to call HTTP method GET. similar to express.js. takes in endpoint and closure that is a function.
+route to get ALL listings
+*/
 Route::get('/', function () {
     // pass data that is array
     return view('listings', [
         'heading' => 'Latest Listings',
-        // passing array into listings View
-        'listings' => [
-            [
-                'id' => 1,
-                'title' => 'Listing One',
-                'description' => 'Paint small barn'
-            ],
-            [
-                'id' => 2,
-                'title' => 'Listing Two',
-                'description' => 'Mount TV in living room'
-            ],
+        // reference Listing model, :: for static method all, data is coming from model
+        'listings' => Listing::all()
+    ]);
+});
 
-        ]
+// route to get single listing
+Route::get('/listings/{id}', function ($id) {
+    return view('listing', [
+        // pass in array that has listing value, value comes from Listing model
+        'listing' => Listing::find($id)
     ]);
 });
 
