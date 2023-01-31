@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,11 +28,14 @@ Route::get('/hello', function() {
 
 // route with wildcard, curly braces around param for wildcard. closure is function with variable of same name
 Route::get('/posts/{id}', function($id) {
-    // debugging, showing values of what is passed in with helpers methods - dump, die, debug
-    ddd($id);
+    // debugging, showing value of what is passed in with helper methods - dump, die, debug
+    // ddd($id);
     return response ('Post '. $id);
     // add constraints to what can be passed. 
     })->where('id', '[0-9]+');
 
-
+// route with request, query params, import class
+Route::get('/search', function(Request $request) {
+    return $request->name . ' ' . $request->city;
+});
 
