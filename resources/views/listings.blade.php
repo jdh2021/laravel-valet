@@ -1,3 +1,8 @@
+@extends('layout')
+
+<!-- wrap in section directive -->
+@section('content')
+
 <h1>{{$heading}}</h1>
 
 <!-- php directive helpful for filtering that can't be done in controller or route -->
@@ -25,3 +30,5 @@
 @else 
     <p>No listings found</p>
 @endunless 
+
+@endsection
