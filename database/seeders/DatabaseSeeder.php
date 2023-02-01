@@ -18,19 +18,22 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(10)->create();
 
          
-        Listing::create([
-            'title' => 'Dog Groomer',
-            'tags' => 'scissoring, bathing, certification',
-            'company' => 'Wags and Whiskers',
-            'location' => 'San Francisco, CA',
-            'email' => 'email@email.com',
-            'website' => 'https://www.wagswhiskerswoof.com',
-            'description' => 'Need experienced dog groomer for busy facility'
-        ]);
+        // Listing::create([
+        //     'title' => 'Dog Groomer',
+        //     'tags' => 'scissoring, bathing, certification',
+        //     'company' => 'Wags and Whiskers',
+        //     'location' => 'San Francisco, CA',
+        //     'email' => 'email@email.com',
+        //     'website' => 'https://www.wagswhiskerswoof.com',
+        //     'description' => 'Need experienced dog groomer for busy facility'
+        // ]);
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // creating listings with Listing factory
+        Listing::factory(6)->create();
     }
 }
