@@ -2,6 +2,11 @@
 
 <!-- wrap in section directive -->
 @section('content')
+
+<!-- include partial templates for hero and search on listings view -->
+@include('partials._hero')
+@include('partials._search')
+
 <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
 
 <!-- php directive helpful for filtering that can't be done in controller or route -->
@@ -31,7 +36,7 @@
         <div>
             <h3 class="text-2xl">
                 <!-- Eloquent models give collection. $listing['title'] replaced by $listing->title-->
-                <a href="show.html">{{$listing->title}}</a>
+                <a href="/listings/{{$listing->id}}">{{$listing->title}}</a>
             </h3>
             <div class="text-xl font-bold mb-4">{{$listing->company}}</div>
             <ul class="flex">
