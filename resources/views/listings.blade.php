@@ -22,9 +22,10 @@
 @foreach($listings as $listing)
 <div class="bg-gray-50 border border-gray-200 rounded p-6">
     <div class="flex">
+        <!-- asset helper to show public images -->
         <img
             class="hidden w-48 mr-6 md:block"
-            src="images/acme.png"
+            src="{{asset('images/no-image.png')}}"
             alt=""
         />
         <div>
