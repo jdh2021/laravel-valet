@@ -29,10 +29,12 @@ Route::get('/', function () {
 });
 
 // route to get single listing
-Route::get('/listings/{id}', function ($id) {
+/* route model binding - Listing model and variable listing gets passed into function
+provides 404 functionality without having to specifiy abort ('404)
+*/
+Route::get('/listings/{listing}', function (Listing $listing) {
     return view('listing', [
-        // pass in array that has listing value, value comes from Listing model
-        'listing' => Listing::find($id)
+        'listing' => $listing
     ]);
 });
 
