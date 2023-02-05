@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-// bring in model
 use App\Models\Listing;
+use Illuminate\Http\Request;
+// bring in model
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,27 +17,22 @@ use App\Models\Listing;
 |
 */
 
-/* route class to call HTTP method GET. similar to express.js. takes in endpoint and closure that is a function.
-route to get ALL listings
+/* route class to call HTTP method GET
+takes in contoller ListingController and index method 
 */
-Route::get('/', function () {
-    // pass data that is array
-    return view('listings', [
-        'heading' => 'Latest Listings',
-        // reference Listing model, :: for static method all, data is coming from model
-        'listings' => Listing::all()
-    ]);
-});
+Route::get('/', [ListingController::class, 'index']);
 
 // route to get single listing
-/* route model binding - Listing model and variable listing gets passed into function
-provides 404 functionality without having to specifiy abort ('404)
-*/
-Route::get('/listings/{listing}', function (Listing $listing) {
-    return view('listing', [
-        'listing' => $listing
-    ]);
-});
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
+
+// Resource Route Naming Conventions:
+// index: show all listings
+// show: show a single listing
+// create: show form to create a listing
+// store: store new listing
+// edit: show form to edit listing
+// update: update listing
+// destory: delete listing
 
 // Route::get('/hello', function() {
 //     // response helper. takes in string and status. add headers.

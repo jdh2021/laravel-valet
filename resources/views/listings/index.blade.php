@@ -1,8 +1,5 @@
-@extends('layout')
 
-<!-- wrap in section directive -->
-@section('content')
-
+<x-layout>
 <!-- include partial templates for hero and search on listings view -->
 @include('partials._hero')
 @include('partials._search')
@@ -33,5 +30,5 @@
     <p>No listings found</p>
 @endunless 
 </div>
+</x-layout>
 
-@endsection

@@ -1,8 +1,5 @@
-@extends('layout')
 
-<!-- wrap in section directive -->
-@section('content')
-
+<x-layout>
 <!-- include partial template for search -->
 @include('partials._search')
 
@@ -50,5 +47,4 @@
         </div>
     </x-card>
 </div>
-
-@endsection
+</x-layout> 
