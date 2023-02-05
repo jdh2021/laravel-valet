@@ -16,5 +16,12 @@ class Listing extends Model
             // check tags column in database
             $query->where('tags', 'like', '%' . request('tag') . '%');
         }
+        // if existence of search entry is not false
+        if($filters['search'] ?? false) {
+            // check title, description, tags columns in database
+            $query->where('title', 'like', '%' . request('search') . '%')
+            ->orWhere('description', 'like', '%' . request('search') . '%')
+            ->orWhere('tags', 'like', '%' . request('search') . '%');
+        }
     }
 }
