@@ -9,10 +9,12 @@ class ListingController extends Controller
 {
     // method to get and show all listings
     public function index() {
+        // request helper to get value of tag
+        // dd(request('tag'));
          // pass data that is array
-    return view('listings.index', [
-        // reference Listing model, :: for static method all, data is coming from model
-        'listings' => Listing::all()
+        return view('listings.index', [
+        // reference Listing model, :: for static method latest, tag gets passed in as $filters in Listing model
+        'listings' => Listing::latest()->filter(request(['tag']))->get()
     ]);
     }
 
