@@ -22,8 +22,13 @@ takes in contoller ListingController and index method
 */
 Route::get('/', [ListingController::class, 'index']);
 
+// route to SHOW form to create a listing with a listing with create method - needs to be placed before /listings/{listing} or create will be seen as {listing}
+Route::get('/listings/create', [ListingController::class, 'create']);
+
 // route to get single listing
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
+
+
 
 // Resource Route Naming Conventions:
 // index: show all listings
