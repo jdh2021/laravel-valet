@@ -17,19 +17,6 @@ use App\Http\Controllers\ListingController;
 |
 */
 
-/* route class to call HTTP method GET
-takes in contoller ListingController and index method 
-*/
-Route::get('/', [ListingController::class, 'index']);
-
-// route to SHOW form to create a listing with a listing with create method - needs to be placed before /listings/{listing} or create will be seen as {listing}
-Route::get('/listings/create', [ListingController::class, 'create']);
-
-// route to get single listing
-Route::get('/listings/{listing}', [ListingController::class, 'show']);
-
-
-
 // Resource Route Naming Conventions:
 // index: show all listings
 // show: show a single listing
@@ -38,6 +25,20 @@ Route::get('/listings/{listing}', [ListingController::class, 'show']);
 // edit: show form to edit listing
 // update: update listing
 // destory: delete listing
+
+/* route class to call HTTP method GET
+takes in contoller ListingController and index method 
+*/
+Route::get('/', [ListingController::class, 'index']);
+
+// route to show form to create a listing with a listing with create method - needs to be placed before /listings/{listing} or create will be seen as {listing}
+Route::get('/listings/create', [ListingController::class, 'create']);
+
+// route to store listing data, store method is called
+Route::post('/listings', [ListingController::class, 'store']);
+
+// route to get single listing
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
 // Route::get('/hello', function() {
 //     // response helper. takes in string and status. add headers.
