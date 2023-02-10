@@ -54,6 +54,8 @@ class ListingController extends Controller
 
         // use model with create method, pass in $formFields array
         Listing::create($formFields);
-        return redirect('/');
+
+        // flash message - stored in memory for one page load - need to view to display that
+        return redirect('/')->with('message', 'Listing created successfully!');
     }
 } 
