@@ -15,7 +15,7 @@ class ListingController extends Controller
          // pass data that is array
         return view('listings.index', [
         // reference Listing model, :: for static method latest, tag gets passed in as $filters in Listing model
-        'listings' => Listing::latest()->filter(request(['tag', 'search']))->get()
+        'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(4)
     ]);
     }
 
