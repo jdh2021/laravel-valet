@@ -53,6 +53,12 @@ class ListingController extends Controller
             'description' => 'required'
         ]);
 
+        // check if image was uploaded with hasFile method
+        if($request->hasFile('logo')) {
+            // add to form fields, set it to path and upload with store method referencing logos folder and public disk
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+
         // use model with create method, pass in $formFields array
         Listing::create($formFields);
 
