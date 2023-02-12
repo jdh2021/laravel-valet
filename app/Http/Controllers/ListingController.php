@@ -41,6 +41,7 @@ class ListingController extends Controller
     return a view to store listing data from form, dependency injection of Request $request
     */
     public function store(Request $request) {
+        // dd($request->file('logo')->store());
         // validate data, validate takes in an array with rules for form fields
         $formFields = $request->validate([
             'title' => 'required',
