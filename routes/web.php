@@ -44,6 +44,8 @@ Route::get('/listings/{listing}', [ListingController::class, 'show']);
 // route to show edit form with edit method
 Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
 
+// route to update listing
+Route::put('/listings/{listing}', [ListingController::class, 'update']);
 
 // Route::get('/hello', function() {
 //     // response helper. takes in string and status. add headers.

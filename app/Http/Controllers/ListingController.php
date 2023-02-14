@@ -70,4 +70,29 @@ class ListingController extends Controller
             // pass in listing itself
             return view('listings.edit', ['listing' =>$listing]);
         }
+
+        // update listing data, pass in listing
+        public function update(Request $request, Listing $listing) {
+            // validate data, validate takes in an array with rules for form fields
+            $formFields = $request->validate([
+                'title' => 'required',
+                'company' => ['required'],
+                'location' => 'required',
+                'website' => 'required',
+                'email' => ['required', 'email'],
+                'tags' => 'required',
+                'description' => 'required'
+            ]);   
+
+            // check if image was uploaded with hasFile method
+            if($request->hasFile('logo')) {
+                // add to form fields, set it to path and upload with store method referencing logos folder and public disk
+                $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+            }
+             // use model with update method, pass in $formFields array
+            $listing->update($formFields);
+
+            // return back, flash message - stored in memory for one page load
+            return back()->with('message', 'Listing updated successfully!');
     }
+}
