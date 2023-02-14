@@ -65,4 +65,9 @@ class ListingController extends Controller
         // flash message - stored in memory for one page load - need to view to display that
         return redirect('/')->with('message', 'Listing created successfully!');
     }
-} 
+        // method to show edit form takes in listing with variable name listing
+        public function edit(Listing $listing) {
+            // pass in listing itself
+            return view('listings.edit', ['listing' =>$listing]);
+        }
+    }

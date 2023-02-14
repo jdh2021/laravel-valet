@@ -40,6 +40,11 @@ Route::post('/listings', [ListingController::class, 'store']);
 // route to get single listing
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
+
+// route to show edit form with edit method
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+
+
 // Route::get('/hello', function() {
 //     // response helper. takes in string and status. add headers.
 //     return response('<h1>Hello World</h1>', 200) 
