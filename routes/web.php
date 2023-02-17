@@ -31,7 +31,7 @@ takes in contoller ListingController and index method
 */
 Route::get('/', [ListingController::class, 'index']);
 
-// route to show form to create a listing with a listing with create method - needs to be placed before /listings/{listing} or create will be seen as {listing}
+// route to show form to create a listing with create method - needs to be placed before /listings/{listing} or create will be seen as {listing}
 Route::get('/listings/create', [ListingController::class, 'create']);
 
 // route to store listing data, store method is called
@@ -40,9 +40,11 @@ Route::post('/listings', [ListingController::class, 'store']);
 // route to get single listing
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
-
 // route to show edit form with edit method
 Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+
+// route to delete single listing with delete method
+Route::delete('/listings/{listing}', [ListingController::class, 'delete']);
 
 // route to update listing
 Route::put('/listings/{listing}', [ListingController::class, 'update']);

@@ -95,4 +95,10 @@ class ListingController extends Controller
             // return back, flash message - stored in memory for one page load
             return back()->with('message', 'Listing updated successfully!');
     }
+
+    // delete listing, pass in listing
+    public function delete(Listing $listing) {
+        $listing->delete();
+        return redirect('/')->with('message', 'Listing deleted successfully');
+    }
 }
