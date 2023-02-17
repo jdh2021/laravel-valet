@@ -4,6 +4,7 @@ use App\Models\Listing;
 use Illuminate\Http\Request;
 // bring in model
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListingController;
 
 /*
@@ -48,6 +49,9 @@ Route::delete('/listings/{listing}', [ListingController::class, 'delete']);
 
 // route to update listing
 Route::put('/listings/{listing}', [ListingController::class, 'update']);
+
+// route to show register/create form to register a new user
+Route::get('/register', [UserController::class, 'create']);
 
 // Route::get('/hello', function() {
 //     // response helper. takes in string and status. add headers.
