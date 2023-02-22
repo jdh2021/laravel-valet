@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Auth\User;
 
 class UserController extends Controller
 {
@@ -20,10 +21,18 @@ class UserController extends Controller
             // email unique to users table, email field
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             // confirmed to match field with _confirmation
-            'password' => ['required, confirmed, min:6']
+            'password' => 'required | confirmed | min:6'
         ]);
 
         // hash password with bcrypt
         $formFields['password'] = bcrypt($formFields['password']);
+
+        // create user 
+        $user = User::create($formFields);
+
+        // log in
+        auth()->login($user);
+
+        return redirect('/')->with('message', 'User created. Logged in');
     }
 }
