@@ -56,6 +56,9 @@ Route::get('/register', [UserController::class, 'create']);
 // route to create new user with store method
 Route::post('/users', [UserController::class, 'store']);
 
+// route to log user out with logout method
+Route::post('/logout', [UserController::class, 'logout']);
+
 // Route::get('/hello', function() {
 //     // response helper. takes in string and status. add headers.
 //     return response('<h1>Hello World</h1>', 200) 
