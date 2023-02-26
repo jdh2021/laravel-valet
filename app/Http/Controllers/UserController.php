@@ -36,6 +36,7 @@ class UserController extends Controller
         return redirect('/')->with('message', 'User created. Logged in');
     }
 
+    // log out a user 
     public function logout (Request $request) {
         // removes auth info from user session -->
         auth()->logout();
@@ -44,6 +45,10 @@ class UserController extends Controller
         $request->session()->regenerateToken();
         // redirect
         return redirect('/')->with('message', 'You\'re logged out');
+    }
 
+    // show login form
+    public function login() {
+        return view('users.login');
     }
 }

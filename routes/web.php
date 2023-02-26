@@ -59,6 +59,9 @@ Route::post('/users', [UserController::class, 'store']);
 // route to log user out with logout method
 Route::post('/logout', [UserController::class, 'logout']);
 
+// route to show login form with login method
+Route::get('/login', [UserController::class, 'login']);
+
 // Route::get('/hello', function() {
 //     // response helper. takes in string and status. add headers.
 //     return response('<h1>Hello World</h1>', 200) 
