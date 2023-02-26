@@ -51,4 +51,22 @@ class UserController extends Controller
     public function login() {
         return view('users.login');
     }
+
+    // log in a user
+    public function authenticate(Request $request) {
+           // validate form fields
+           $formFields = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => 'required'
+        ]);
+
+        // attempt to log user in
+        if (auth()->attempt($formFields)) {
+            // generate a session id
+            $request->session()->regenerate();
+            return redirect('/')->with('message', 'Logged in!');
+        }
+        // if login attempt fails. withErrors takes in array
+        return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
+    }
 }

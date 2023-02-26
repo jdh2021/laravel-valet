@@ -62,6 +62,9 @@ Route::post('/logout', [UserController::class, 'logout']);
 // route to show login form with login method
 Route::get('/login', [UserController::class, 'login']);
 
+// route to log in a user
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
 // Route::get('/hello', function() {
 //     // response helper. takes in string and status. add headers.
 //     return response('<h1>Hello World</h1>', 200) 
