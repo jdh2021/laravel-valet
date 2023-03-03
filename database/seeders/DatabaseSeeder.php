@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use App\Models\Listing;
 use Illuminate\Database\Seeder;
 
@@ -15,8 +16,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
+        // \App\Models\User::factory(10)->create();
 
+        // pass in array to create that includes fields that you want to be predefined
+        $user = User::factory()->create([
+            'name' => 'Amanda Smith',
+            'email' => 'amandas@test.com'
+        ]);
+
+
+        // creating listings with Listing factory
+        Listing::factory(6)->create([
+            // define user_id (foreign key) as the id of the user that was created from User factory
+            'user_id' => $user->id
+        ]);
          
         // Listing::create([
         //     'title' => 'Dog Groomer',
@@ -33,7 +46,5 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // creating listings with Listing factory
-        Listing::factory(6)->create();
     }
 }
