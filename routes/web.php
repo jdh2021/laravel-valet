@@ -33,7 +33,7 @@ takes in contoller ListingController and index method
 Route::get('/', [ListingController::class, 'index']);
 
 // route to show form to create a listing with create method - needs to be placed before /listings/{listing} or create will be seen as {listing}
-Route::get('/listings/create', [ListingController::class, 'create']);
+Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
 
 // route to store listing data, store method is called
 Route::post('/listings', [ListingController::class, 'store']);
@@ -60,7 +60,7 @@ Route::post('/users', [UserController::class, 'store']);
 Route::post('/logout', [UserController::class, 'logout']);
 
 // route to show login form with login method
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login'])->name('login');
 
 // route to log in a user
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
