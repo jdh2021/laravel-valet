@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('listings', function (Blueprint $table) {
             $table->id();
+            // add foreignId so that listing is associated with user, cascade so all listings from one deleted user will also be deleted
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title');
             // nullable method if image is left blank
             $table->string('logo')->nullable();
