@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -58,6 +59,9 @@ class ListingController extends Controller
             // add to form fields, set it to path and upload with store method referencing logos folder and public disk
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
         }
+
+        // let database know which user submitted the form with auth helper
+        $formFields['user_id'] = auth()->id();
 
         // use model with create method, pass in $formFields array
         Listing::create($formFields);
