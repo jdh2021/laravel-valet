@@ -38,17 +38,20 @@ Route::get('/listings/create', [ListingController::class, 'create'])->middleware
 // route to store listing data, store method is called
 Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
 
-// route to get single listing
-Route::get('/listings/{listing}', [ListingController::class, 'show']);
-
 // route to show edit form with edit method
 Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
+
+// route to update listing
+Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
 
 // route to delete single listing with delete method
 Route::delete('/listings/{listing}', [ListingController::class, 'delete'])->middleware('auth');
 
-// route to update listing
-Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
+// route to manage listings
+Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
+
+// route to get single listing
+Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
 // route to show register/create form to register a new user
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
@@ -64,6 +67,7 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 
 // route to log in a user
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
 
 // Route::get('/hello', function() {
 //     // response helper. takes in string and status. add headers.
