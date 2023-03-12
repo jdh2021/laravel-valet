@@ -39,7 +39,7 @@
                         <!-- cross-site protection -->
                         @csrf
                         @method('DELETE')
-                        <button class="text-red-500"><i class="fa-solid fa-trash"></i>Delete</button>
+                        <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
                     </form>
                     </td>
                 </tr>

@@ -2,7 +2,6 @@
 
 use App\Models\Listing;
 use Illuminate\Http\Request;
-// bring in model
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListingController;
@@ -35,6 +34,9 @@ Route::get('/', [ListingController::class, 'index']);
 // route to show form to create a listing with create method - needs to be placed before /listings/{listing} or create will be seen as {listing}
 Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
 
+// route to manage listings
+Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
+
 // route to store listing data, store method is called
 Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
 
@@ -46,9 +48,6 @@ Route::put('/listings/{listing}', [ListingController::class, 'update'])->middlew
 
 // route to delete single listing with delete method
 Route::delete('/listings/{listing}', [ListingController::class, 'delete'])->middleware('auth');
-
-// route to manage listings
-Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
 
 // route to get single listing
 Route::get('/listings/{listing}', [ListingController::class, 'show']);

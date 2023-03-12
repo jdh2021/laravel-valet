@@ -77,6 +77,11 @@ class ListingController extends Controller
 
         // update listing data, pass in listing
         public function update(Request $request, Listing $listing) {
+            // before data validation, check that listings belongs to user. if listing user_id is not equal to the id of the logged in user
+            if($listing->user_id != auth()->id()) {
+                abort(403, 'Unauthorized to edit this listing'); 
+            }
+
             // validate data, validate takes in an array with rules for form fields
             $formFields = $request->validate([
                 'title' => 'required',
@@ -102,6 +107,9 @@ class ListingController extends Controller
 
     // delete listing, pass in listing
     public function delete(Listing $listing) {
+        if($listing->user_id != auth()->id()) {
+            abort(403, 'Unauthorized to delete this listing'); 
+        }
         $listing->delete();
         return redirect('/')->with('message', 'Listing deleted successfully');
     }
